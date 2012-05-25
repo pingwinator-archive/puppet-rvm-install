@@ -3,8 +3,6 @@ define rvm::setup(
     $src_dir = "/usr/local/src"
 ) {
 
-package { "wget" : ensure => installed }
-
 exec { rvm_download :
     command =>"wget https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer -O ${src_dir}/rvm-installer",
     creates => "${src_dir}/rvm-installer",
