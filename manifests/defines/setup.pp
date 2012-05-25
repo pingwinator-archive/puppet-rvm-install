@@ -1,5 +1,5 @@
 define rvm::setup(
-    $user = "dev",
+    $user = $name,
     $src_dir = "/usr/local/src"
 ) {
 
