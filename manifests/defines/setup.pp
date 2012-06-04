@@ -32,9 +32,9 @@ file { "rvm_ruby_install_wrapper-${user}" :
     mode => 500,
     owner => $user,
     replace => true,
-    content => "#!/usr/bin/env bash
+    content => '#!/usr/bin/env bash
 source /home/${user}/.rvm/bin/rvm
-rvm install $1"
+rvm install $1'
 }
 
 file { "rvm_ruby_gemset_wrapper-${user}" :
@@ -42,9 +42,9 @@ file { "rvm_ruby_gemset_wrapper-${user}" :
     mode => 500,
     owner => $user,
     replace => true,
-    content => "#!/usr/bin/env bash
+    content => '#!/usr/bin/env bash
 source /home/${user}/.rvm/bin/rvm
-rvm use $1@$2 --create"
+rvm use $1@$2 --create'
 }
 
 }
