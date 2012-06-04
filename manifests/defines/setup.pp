@@ -30,7 +30,7 @@ exec { rvm_shell :
 file { "rvm_ruby_install_wrapper-${user}" :
     path => "/home/${user}/.rvm/rvm_ruby_install_wrapper",
     mode => 500,
-    user => $user,
+    owner => $user,
     replace => true,
     content => "#!/usr/bin/env bash
 source /home/${user}/.rvm/bin/rvm
@@ -40,7 +40,7 @@ rvm install $1"
 file { "rvm_ruby_gemset_wrapper-${user}" :
     path => "/home/${user}/.rvm/rvm_ruby_gemset_wrapper",
     mode => 500,
-    user => $user,
+    owner => $user,
     replace => true,
     content => "#!/usr/bin/env bash
 source /home/${user}/.rvm/bin/rvm
