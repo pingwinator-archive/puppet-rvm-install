@@ -4,8 +4,8 @@ define rvm::setup(
 ) {
 
 exec { rvm_download :
-    command =>"curl -L get.rvm.io | bash -s ${version}",
-    user => $user,
+    command =>"/usr/bin/sudo -i -u ${user} curl -L get.rvm.io | bash -s ${version}",
+    #user => $user,
     unless => "grep ${version} /home/${user}/.rvm/VERSION",
 }
 
