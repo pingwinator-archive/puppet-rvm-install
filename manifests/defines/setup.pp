@@ -33,6 +33,16 @@ define rvm::setup(
             rvm install \$1"
     }
     
+    file { "rvm_ruby_gemset_wrapper-${user}" :
+        path => "/home/${user}/.rvm/bin/rvm_gemset_install",
+        mode => 500,
+        owner => $user,
+        replace => true,
+        content => "#!/usr/bin/env bash
+    source /home/${user}/.rvm/bin/rvm
+    rvm use \$1@\$2 --create --install"
+    }
+    
     
     
 
