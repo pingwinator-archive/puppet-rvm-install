@@ -19,7 +19,7 @@ define rvm::setup(
         command => "/usr/bin/sudo -i -u ${user} ${src_dir}/rvm-installer --version ${version} > /home/${user}/.rvm_install.log 2>&1",
         require => Exec["rvm_download"],
         creates => "/home/${user}/.rvm",
-        shell => "/bin/bash"
+        shell => "/bin/bash",
         cwd => "/tmp/"
         #user => $user
     }
