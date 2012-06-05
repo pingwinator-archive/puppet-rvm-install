@@ -16,7 +16,7 @@ define rvm::setup(
     }
 
     exec { rvm_install:
-        command => "bash ${src_dir}/rvm-installer --version ${version} > /home/${user}/.rvm_install.log 2>&1",
+        command => "bash -l ${src_dir}/rvm-installer --version ${version} > /home/${user}/.rvm_install.log 2>&1",
         require => Exec["rvm_download"],
         creates => "/home/${user}/.rvm",
         cwd => "/tmp/",
