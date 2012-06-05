@@ -20,7 +20,7 @@ define rvm::setup(
         require => Exec["rvm_download"],
         creates => "/home/${user}/.rvm",
         shell => "/bin/bash"
-        cwd => "/tmp/",
+        cwd => "/tmp/"
         #user => $user
     }
 
