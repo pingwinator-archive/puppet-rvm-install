@@ -23,17 +23,15 @@ define rvm::setup(
         cwd => "/tmp/"
     }
     
-    
-    file { "rvm_run_wrapper-${user}" :
-        path => "/home/${user}/.rvm/rvm_run",
+    file { "rvm_ruby_install_wrapper-${user}" :
+        path => "/home/${user}/.rvm/bin/rvm_ruby_install",
         mode => 500,
         owner => $user,
         replace => true,
         content => "#!/usr/bin/env bash
-            [[ -s \"$HOME/.rvm/scripts/rvm\" ]] && source \"$HOME/.rvm/scripts/rvm\"
-            exec \"$@\""
+            source /home/${user}/.rvm/bin/rvm
+            rvm install \$1"
     }
-    
     
     
     
