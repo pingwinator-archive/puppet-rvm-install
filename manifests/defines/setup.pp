@@ -1,7 +1,6 @@
 define rvm::setup(
     $user = $name,
-    $version = '1.14.1'
-    $src_dir = "/usr/local/src"
+    $version = '1.14.1',
 ) {
 
 exec { rvm_download :
