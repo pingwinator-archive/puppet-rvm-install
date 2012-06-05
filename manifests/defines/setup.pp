@@ -40,7 +40,7 @@ define rvm::setup(
         replace => true,
         content => "#!/usr/bin/env bash
     source /home/${user}/.rvm/bin/rvm
-    rvm gemset create \$1"
+    rvm \$1 do rvm gemset create \$2"
     }
     
     
