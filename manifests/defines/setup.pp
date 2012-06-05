@@ -22,5 +22,20 @@ define rvm::setup(
         provider => "shell",
         cwd => "/tmp/"
     }
+    
+    
+    file { "rvm_run_wrapper-${user}" :
+        path => "/home/${user}/.rvm/rvm_run",
+        mode => 500,
+        owner => $user,
+        replace => true,
+        content => "#!/usr/bin/env bash
+            [[ -s \"$HOME/.rvm/scripts/rvm\" ]] && source \"$HOME/.rvm/scripts/rvm\"
+            exec \"$@\""
+    }
+    
+    
+    
+    
 
 }
