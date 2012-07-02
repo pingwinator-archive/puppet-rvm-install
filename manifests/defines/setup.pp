@@ -4,18 +4,9 @@ define rvm::setup(
     $src_dir = "/usr/local/src"
 ) {
 
-    exec { rvm_download :
-        command =>"wget get.rvm.io -O ${src_dir}/rvm-installer",
-        creates => "${src_dir}/rvm-installer",
-        notify => File["rvm-installer"]
-    }
+    realize(Exec["rvm_download"], File["rvm-installer"])
 
-    file { 'rvm-installer' : 
-        path => "${src_dir}/rvm-installer",
-        mode => 755,
-    }
-
-    exec { rvm_install:
+    exec { "rvm_install-${user}" :
         command => "/usr/bin/sudo -i -u ${user} ${src_dir}/rvm-installer --version ${version} > /home/${user}/.rvm_install.log 2>&1",
         require => Exec["rvm_download"],
         creates => "/home/${user}/.rvm",
