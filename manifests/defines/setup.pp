@@ -2,9 +2,7 @@ define rvm::setup(
     $user = $name,
     $version = '1.14.1',
     $src_dir = "/usr/local/src"
-) {
-
-    realize(Exec["rvm_download"], File["rvm-installer"])
+) {    
 
     exec { "rvm_install-${user}" :
         command => "/usr/bin/sudo -i -u ${user} ${src_dir}/rvm-installer --version ${version} > /home/${user}/.rvm_install.log 2>&1",
