@@ -1,9 +1,12 @@
-define rvm::install($ruby = $name, $user) {
+define rvm::install($user) {
 
-exec { "rvm_ruby_install-${ruby}-${user}" : 
-    command => "/usr/bin/sudo -i -u ${user} /home/${user}/.rvm/bin/rvm_ruby_install ${ruby}",
-    creates => "/home/${user}/.rvm/bin/${ruby}",
-    require => File["rvm_ruby_install_wrapper-${user}"]
-}
+exec { "install-${name}-${user}" :
+        command => "/bin/bash -l -c 'rvm use ${name} --create --install' > /home/${user}/.rvm/${name}_install.log 2>&1",
+        require => Exec["rvm_install_${user}"],
+        #creates => "/home/${user}/.rvm",
+        provider => "shell",
+        user => $user,
+        cwd => "/tmp/"
+    }
 
 }
