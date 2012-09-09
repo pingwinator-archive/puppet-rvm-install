@@ -3,7 +3,7 @@ define rvm::setup(
     $src_dir = "/usr/local/src"
 ) {
 
-    exec { "rvm_install_${name}" :
+    exec { "rvm_setup_${name}" :
         command => "sudo -i -u ${name} bash -l -c '${src_dir}/rvm-installer --version ${version} > /home/${name}/.rvm_install.log'",
         require => Exec["rvm_download"],
         creates => "/home/${name}/.rvm",
