@@ -1,5 +1,6 @@
 define rvm::install($user) {
 
+    require rvm
     require rvm::setup($user)
 
     exec { "rvm_install_${name}_for_${user}" :
