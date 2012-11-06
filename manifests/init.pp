@@ -8,7 +8,7 @@ class rvm($src_dir = "/usr/local/src") {
 	    notify => File["rvm-installer"]
 	}
 
-	file { 'rvm-installer' : 
+	file { 'rvm-installer' :
 	    path => "${src_dir}/rvm-installer",
 	    mode => 755,
 	}
